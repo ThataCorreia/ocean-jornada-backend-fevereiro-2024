@@ -9,5 +9,12 @@ app.get('/oi', function (req, res) {
     res.send('Olá, mundo')
 })
 
-app.listen(3000)
+// Lista de personagem
+const lista = ['Rick Sanchez', 'Morty Smith', 'Summer Smith']
 
+// Read ALL -> [GET] /item
+app.get('/item', function (req, res) {
+  res.send(lista)
+})
+
+app.listen(3000)
