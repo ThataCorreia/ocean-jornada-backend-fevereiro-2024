@@ -26,9 +26,15 @@ async function main() {
   const lista = ['Rick Sanchez', 'Morty Smith', 'Summer Smith']
 
   // Read ALL -> [GET] /item
-  app.get('/item', function (req, res) {
-    res.send(lista)
+  app.get('/item',async function (req, res) {
+
+    const items = await collection.find().toArray()
+
+    res.send(items)
   })
+
+  const db = client.db(dbName)
+  const collection = db.collection('items')
 
   // Read By ID -> [GET] /item/:id
   app.get('/item/:id', function (req, res) {
